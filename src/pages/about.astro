@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const groups = [
+  {
+    name: 'K4 Quick Games',
+    description: 'Our flagship studio behind Laser Gun Spleef — fast-paced, competitive games designed for quick sessions.',
+    link: 'https://www.roblox.com/groups/1034948068',
+  },
+  {
+    name: 'Kaforr Games',
+    description: 'Home to our bridge and troll games, brainrot experiences, and creative social experiments.',
+    link: 'https://www.roblox.com/groups/35860540',
+  },
+  {
+    name: 'K4 Blocked Games',
+    description: 'Focused on 1v1 strategy and prediction games — Block or Get Shot, Predict the Shot, and Reload Duel.',
+    link: 'https://www.roblox.com/groups/903419784',
+  },
+  {
+    name: 'K4 Games',
+    description: 'Our core group and the foundation of the K4 Games brand.',
+    link: 'https://www.roblox.com/groups/427824840',
+  },
+  {
+    name: 'Stage Fright.',
+    description: 'Social storytelling games where you perform in front of a crowd and see how they react.',
+    link: 'https://www.roblox.com/groups/35504096',
+  },
+];
+
+const genres = [
+  {
+    icon: '🎯',
+    title: 'Competitive Spleef',
+    description: 'Laser gun spleef games where you destroy blocks beneath opponents to be the last one standing.',
+  },
+  {
+    icon: '🌈',
+    title: 'Bridge Challenges',
+    description: 'Color bridge and glass bridge games that test your IQ, reflexes, and luck.',
+  },
+  {
+    icon: '🧠',
+    title: 'Strategy & Prediction',
+    description: '1v1 games built around bluffing, timing, and outsmarting your opponent.',
+  },
+  {
+    icon: '🎭',
+    title: 'Social & Comedy',
+    description: 'Unique social experiences from stage fright performances to troll bridges.',
+  },
+];
+---
+
+<BaseLayout title="About Us" description="Learn about K4 Games - a Roblox development studio with millions of visits across 20+ games.">
+  <section class="about-page">
+    <div class="container">
+      <!-- Hero -->
+      <div class="about-hero animate-fade-in-up">
+        <h1 class="page-title">About K4 Games</h1>
+        <p class="page-subtitle">
+          We create engaging Roblox experiences that bring players together.
+        </p>
+      </div>
+
+      <!-- Mission -->
+      <div class="mission-section animate-fade-in-up">
+        <div class="mission-card glass">
+          <h2 class="section-title">Our Mission</h2>
+          <p>
+            K4 Games is a Roblox development studio focused on building fun, competitive,
+            and creative games. From our breakout hit Laser Gun Spleef with over 4 million
+            visits to our innovative bridge and strategy games, we're dedicated to pushing
+            the boundaries of what Roblox games can be.
+          </p>
+          <p>
+            With over 5 million total visits and a growing portfolio of 20+ games, we continue
+            to experiment with new genres, mechanics, and ideas to deliver fresh experiences
+            to the Roblox community.
+          </p>
+        </div>
+      </div>
+
+      <!-- What We Build -->
+      <div class="genres-section">
+        <h2 class="section-title animate-fade-in-up" style="text-align: center;">What We Build</h2>
+        <p class="section-subtitle animate-fade-in-up" style="text-align: center;">Our games span multiple genres and play styles</p>
+
+        <div class="genres-grid stagger">
+          {genres.map(genre => (
+            <div class="genre-card glass glass-hover animate-fade-in-up">
+              <span class="genre-icon">{genre.icon}</span>
+              <h3>{genre.title}</h3>
+              <p>{genre.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Our Groups -->
+      <div class="groups-section">
+        <h2 class="section-title animate-fade-in-up" style="text-align: center;">Our Studios</h2>
+        <p class="section-subtitle animate-fade-in-up" style="text-align: center;">We develop across multiple Roblox groups</p>
+
+        <div class="groups-list stagger">
+          {groups.map(group => (
+            <a href={group.link} target="_blank" rel="noopener noreferrer" class="group-card glass glass-hover animate-fade-in-up">
+              <div class="group-info">
+                <h3>{group.name}</h3>
+                <p>{group.description}</p>
+              </div>
+              <svg class="group-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .about-page {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+  }
+
+  .about-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.15rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Mission */
+  .mission-section {
+    margin-bottom: 5rem;
+  }
+
+  .mission-card {
+    padding: 3rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), var(--bg-glass));
+  }
+
+  .mission-card .section-title {
+    margin-bottom: 1.5rem;
+  }
+
+  .mission-card p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .mission-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Genres */
+  .genres-section {
+    margin-bottom: 5rem;
+  }
+
+  .genres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .genre-card {
+    padding: 2rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+  }
+
+  .genre-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .genre-icon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  .genre-card h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .genre-card p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  /* Groups */
+  .groups-section {
+    margin-bottom: 2rem;
+  }
+
+  .groups-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .group-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all var(--transition-normal);
+  }
+
+  .group-card:hover {
+    transform: translateX(6px);
+    color: var(--text-primary);
+  }
+
+  .group-info h3 {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  .group-info p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .group-arrow {
+    color: var(--accent-light);
+    flex-shrink: 0;
+    transition: transform var(--transition-fast);
+  }
+
+  .group-card:hover .group-arrow {
+    transform: translate(4px, -4px);
+  }
+
+  @media (max-width: 640px) {
+    .mission-card {
+      padding: 2rem 1.5rem;
+    }
+
+    .group-card {
+      padding: 1.25rem 1.5rem;
+    }
+  }
+</style>

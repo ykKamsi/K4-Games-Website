@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import StatsBar from '../components/StatsBar.astro';
+import FeaturedGames from '../components/FeaturedGames.astro';
+---
+
+<BaseLayout title="Home">
+  <Hero />
+  <StatsBar />
+  <FeaturedGames />
+
+  <!-- About Teaser -->
+  <section class="about-teaser section">
+    <div class="container">
+      <div class="teaser-content animate-fade-in-up">
+        <div class="teaser-text">
+          <h2 class="section-title">Who We Are</h2>
+          <p class="teaser-desc">
+            K4 Games is a Roblox development studio dedicated to creating unique,
+            engaging experiences that bring players together. From intense spleef battles
+            to brain-teasing bridge challenges, our games have attracted millions of visits
+            and a passionate community of players.
+          </p>
+          <a href="/about" class="btn btn-secondary">
+            Learn More About Us
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+        </div>
+        <div class="teaser-visual">
+          <div class="teaser-card glass">
+            <div class="teaser-stat">
+              <span class="teaser-num">5M+</span>
+              <span class="teaser-label">Players Reached</span>
+            </div>
+          </div>
+          <div class="teaser-card glass">
+            <div class="teaser-stat">
+              <span class="teaser-num">20+</span>
+              <span class="teaser-label">Games Published</span>
+            </div>
+          </div>
+          <div class="teaser-card glass">
+            <div class="teaser-stat">
+              <span class="teaser-num">470K+</span>
+              <span class="teaser-label">Favorites Earned</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-content glass animate-fade-in-up">
+        <h2 class="cta-title">Want to Work With Us?</h2>
+        <p class="cta-desc">Whether you're a developer, designer, or just want to chat — we'd love to hear from you.</p>
+        <a href="/contact" class="btn btn-primary">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  /* About Teaser */
+  .about-teaser {
+    background:
+      radial-gradient(ellipse 50% 50% at 80% 50%, rgba(59, 130, 246, 0.06) 0%, transparent 70%),
+      var(--bg-primary);
+  }
+
+  .teaser-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .teaser-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .teaser-visual {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .teaser-visual .teaser-card:last-child {
+    grid-column: span 2;
+  }
+
+  .teaser-card {
+    padding: 1.5rem;
+    text-align: center;
+    transition: all var(--transition-normal);
+  }
+
+  .teaser-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px var(--accent-glow);
+    border-color: var(--border-color-hover);
+  }
+
+  .teaser-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .teaser-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 2rem 0 4rem;
+  }
+
+  .cta-content {
+    text-align: center;
+    padding: 4rem 2rem;
+    background:
+      linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(18, 18, 26, 0.8) 100%);
+  }
+
+  .cta-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--text-primary), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .cta-desc {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 768px) {
+    .teaser-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .teaser-visual {
+      grid-template-columns: 1fr;
+    }
+
+    .teaser-visual .teaser-card:last-child {
+      grid-column: span 1;
+    }
+  }
+</style>

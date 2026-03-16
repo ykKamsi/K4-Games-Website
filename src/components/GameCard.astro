@@ -1,0 +1,156 @@
+---
+import { formatNumber, getGameUrl } from '../data/games';
+
+interface Props {
+  name: string;
+  placeId: number;
+  visits: number;
+  favorites: number;
+  group: string;
+  thumbnailUrl: string;
+  description?: string;
+}
+
+const { name, placeId, visits, favorites, group, thumbnailUrl, description } = Astro.props;
+---
+
+<a href={getGameUrl(placeId)} target="_blank" rel="noopener noreferrer" class="game-card glass glass-hover animate-fade-in-up">
+  <div class="card-image">
+    <img src={thumbnailUrl} alt={name} loading="lazy" />
+    <div class="card-overlay">
+      <span class="play-btn">Play Now</span>
+    </div>
+  </div>
+  <div class="card-content">
+    <h3 class="card-title">{name}</h3>
+    {description && <p class="card-desc">{description}</p>}
+    <div class="card-stats">
+      <div class="stat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span>{formatNumber(visits)} visits</span>
+      </div>
+      <div class="stat">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+        <span>{formatNumber(favorites)}</span>
+      </div>
+    </div>
+    <span class="card-group">{group}</span>
+  </div>
+</a>
+
+<style>
+  .game-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: all var(--transition-normal);
+  }
+
+  .game-card:hover {
+    transform: translateY(-6px);
+    color: var(--text-primary);
+  }
+
+  .card-image {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-normal), filter var(--transition-normal);
+  }
+
+  .game-card:hover .card-image img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  .card-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+  }
+
+  .game-card:hover .card-overlay {
+    opacity: 1;
+  }
+
+  .play-btn {
+    padding: 0.6rem 1.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: white;
+    box-shadow: 0 4px 15px var(--accent-glow);
+  }
+
+  .card-content {
+    padding: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-title {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    flex: 1;
+  }
+
+  .card-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+  }
+
+  .stat svg {
+    color: var(--accent-light);
+    flex-shrink: 0;
+  }
+
+  .card-group {
+    display: inline-block;
+    padding: 0.25rem 0.6rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    border-radius: var(--radius-sm);
+    font-size: 0.7rem;
+    color: var(--accent-light);
+    font-weight: 500;
+    align-self: flex-start;
+  }
+</style>

@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
+import { games, totalVisits, totalGames, formatNumber } from '../data/games';
+
+const sortedGames = [...games].sort((a, b) => b.visits - a.visits);
+---
+
+<BaseLayout title="Games" description="Browse all games by K4 Games - a Roblox development studio with millions of visits.">
+  <section class="games-page">
+    <div class="container">
+      <div class="page-header animate-fade-in-up">
+        <h1 class="page-title">Our Games</h1>
+        <p class="page-subtitle">
+          {totalGames} games with {formatNumber(totalVisits)} total visits across the Roblox platform
+        </p>
+      </div>
+
+      <div class="games-grid stagger">
+        {sortedGames.map(game => (
+          <GameCard
+            name={game.name}
+            placeId={game.placeId}
+            visits={game.visits}
+            favorites={game.favorites}
+            group={game.group}
+            thumbnailUrl={game.thumbnailUrl}
+            description={game.description}
+          />
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .games-page {
+    padding-top: 8rem;
+    padding-bottom: 4rem;
+    min-height: 100vh;
+  }
+
+  .page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .page-title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    margin-bottom: 0.75rem;
+    background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .page-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+  }
+
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

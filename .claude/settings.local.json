@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:games.roblox.com)",
+      "WebFetch(domain:groups.roblox.com)",
+      "WebFetch(domain:www.vln3devs.com)",
+      "Bash(curl -s https://games.roblox.com/v1/games?universeIds=9743272919,9831177756,9883482632,7311454279)",
+      "Bash(curl -s \"https://games.roblox.com/v2/groups/903419784/games?sortOrder=Asc&limit=50\")",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); [print\\(f''''{g[id]}''''\\) for g in d[''''data'''']]\")",
+      "Bash(curl -s https://games.roblox.com/v1/games?universeIds=9561954883,9686601143,9690830083)",
+      "Bash(curl -s \"https://games.roblox.com/v2/groups/323662902/games?sortOrder=Asc&limit=50\")",
+      "WebFetch(domain:thumbnails.roblox.com)",
+      "Bash(curl -s \"https://games.roblox.com/v2/groups/784203515/games?sortOrder=Asc&limit=50\")",
+      "Bash(curl -s https://games.roblox.com/v1/games?universeIds=9784251283)",
+      "Bash(curl -s https://games.roblox.com/v1/games?universeIds=9432793836,9074565305,8409457069)",
+      "Bash(curl -s \"https://games.roblox.com/v2/groups/592235864/games?sortOrder=Asc&limit=50\")",
+      "Bash(curl -s \"https://thumbnails.roblox.com/v1/games/icons?universeIds=9432793836&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false\")",
+      "Bash(curl -s https://games.roblox.com/v1/games?universeIds=9299375335,9374364467)",
+      "Bash(curl -s \"https://thumbnails.roblox.com/v1/games/icons?universeIds=9299375335,9374364467&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false\")",
+      "Bash(npm create:*)",
+      "Bash(export PATH=\"$PATH:/c/Program Files/nodejs:/c/Users/kmsok/AppData/Roaming/npm\")",
+      "Bash(find /c/Users/kmsok/K4GamesSite -maxdepth 2 -type f \\\\\\(-name *.ts -o -name *.tsx -o -name *.astro -o -name *.config.mjs -o -name *.config.js -o -name tsconfig.json -o -name astro.config.* \\\\\\))",
+      "WebFetch(domain:dobig.com)",
+      "WebFetch(domain:rubiconstudios.io)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({k:v for k,v in d.items\\(\\) if k in [''''version'''',''''peerDependencies'''',''''engines'''']}, indent=2\\)\\)\")",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(npx --version)",
+      "Bash(where node.exe)",
+      "Bash(where npm.cmd)",
+      "Read(//c/Program Files/nodejs//**)",
+      "Bash(npx astro:*)"
+    ]
+  }
+}
